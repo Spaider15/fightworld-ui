@@ -1,0 +1,188 @@
+/*
+html, body {
+  overflow:hidden;
+  height: 900;
+  width: 100%;
+  font-family: "Kreon", "Helvetica", serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+/*
+div.container {
+  height: inherit;
+}
+
+div.message {
+  border-radius: 15px;
+  padding: 10px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: relative;
+}
+*/
+room-Arena {
+  height:90%;
+  width:100%;
+}
+span.msg-user {
+  font-weight: bold;
+}
+
+span.msg-content {
+ white-space: pre-wrap;
+ width:85%;
+}
+
+.emoji {
+  width: 1.25em;
+  height: 1.25em;
+  display: inline-block;
+}
+span.message-timestamp{
+  font-size: small;
+  position: absolute;
+  bottom: 2px;
+  right: 10px;
+}
+/*
+div.chat-container {
+  /* The margin-top pushes the chat panel below the navbar *//*
+  margin-top: 71px;
+  height: 90%;
+}
+*/
+div.container.main div.info {
+  float: left;
+}
+div.container.main div.media {
+  margin-top: 10px;
+  width: 250px;
+}
+div.container.main div.media div.media-left img {
+  border: 1px solid #FFCC00;
+  border-radius: 5px;
+}
+div.container.main div.media div.media-left div.lvl {
+  position: absolute;
+  color: #FFCC00;
+  background: #333333;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #FFCC00;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 5px 0px 5px 0px;
+}
+div.media-body .info-container {
+  width: 150px;
+}  
+div.media-body .info-container .username {
+  text-align: left;
+  padding: 0 0 10px;
+  margin: 0px;
+}
+div.media-body .info-container .info .classname,
+div.media-body .info-container .info .clanname {
+  margin: 0px;
+}
+div.media-body .info-container .hpmp {
+  font-size: 15px;
+  font-weight: bold;
+}
+div.media-body .info-container .hpmp .hp {
+  color: #FF6666;
+}
+div.media-body .info-container .hpmp .delimiter {
+  color: #666666;
+}
+div.media-body .info-container .hpmp .mp {
+  color: #6666FF;
+}
+.progress.exp {
+  width: 240px;
+  margin-top: 5px;
+}
+#panelContainer {
+  height: 30%;
+  bottom: 10px;
+  width: 100%;
+  left: 0px;
+}
+#panelContainer .resizer{
+  height: 3px;
+  margin-top: 3px;
+  width: 100%;
+  cursor: n-resize;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}  
+#panelContainer #tab-container {
+  width: 100%;
+  padding: 0px 15px;
+  margin-top: -42px;
+}  
+#panelContainer .panel {
+  margin-bottom: 0px;
+  padding-bottom: 40px;
+}  
+#chat-panel {
+  height: 100%;
+  width: 84%;
+  padding: 0px;
+  float:left;
+}
+
+#chat-panel .rooms, #chat-panel #chat-controls {
+    padding: 0 20px;
+}
+
+.chat-entries {
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  width: inherit;
+}
+
+#side-panel {
+  height: 100%;
+  float: right;
+  width: 15%;
+  overflow-y: scroll;
+}
+
+.num-connected, #public-rooms-title, #all-users-list-title {
+  font-weight: bold;
+}
+
+#chat-controls {
+  position: absolute;
+  bottom: 50px;
+}
+
+#chat-panel .tab-pane {
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 50px;
+}
+
+html,body { font: 13px Helvetica, Arial; }
+#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+div.container {
+  height: inherit;
+}
+div.message {
+  border-radius: 15px;
+  position: relative;
+  padding: 2px 5px;
+}
+.message.private {
+  background-color: #CC3399;
+}  
+
+.main.container_ {
+  height: 70%;
+}

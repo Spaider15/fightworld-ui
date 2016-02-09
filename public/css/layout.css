@@ -1,0 +1,37 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+}
+#al {
+  margin: 9px auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 20px;
+  z-index: 1031;
+  line-height: 1px;
+  text-align: center;
+  display: none;
+  color:white;
+}
+.navbar-inner .container .navbar-nav {
+    margin-top: 16px;
+    float: right;
+}
+body .container.main {
+    margin: 0px;
+    width: 100%;
+}
+.navigation .fight li  {
+    margin-top: -1px;
+}
+.navigation .fight li a {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}    
