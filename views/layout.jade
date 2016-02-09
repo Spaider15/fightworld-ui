@@ -1,0 +1,64 @@
+-var username;
+doctype html
+html
+  head
+    title Arena-beta
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/custom.css')
+    link(rel='stylesheet', href='/css/template.css')
+    link(rel='stylesheet', href='/css/layout.css')
+    link(rel='stylesheet', href='/css/index.css')
+    link(rel='stylesheet', href='/css/fight.css')
+    link(rel='stylesheet', href='/css/register.css')
+    block scripts
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+      script(src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js')
+      script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+      script(src='/js/client.js')
+
+  body
+    if (flash)
+      while i = flash.shift()
+        .alert.alert-danger.alert-dismissible(role='alert')
+          button.close(type='button', data-dismiss="alert", aria-label="Close")
+            span(aria-hidden="true") &times;
+          p.text-center=i.message
+    .alert#al(role="alert") 
+    .navbar.navbar-default.navbar-fixed-top.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-ex-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href="/") Arena-beta
+        #navbar-ex-collapse.collapse.navbar-collapse
+          if (typeof(user) == 'undefined')
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href="/login") Log In
+              li
+                a(href="/register") Register
+          else
+            ul.nav.navbar-nav.navbar-right
+              li#Stats
+                a(href='#') Character
+              li#Shop
+                a(href='#') Shop
+              li#Clan-nav-item
+                a(href='#') Clan    
+              li#forum-nav-link
+                a(href="#") Forum     
+              li#logout-nav-item
+                a(href="/logout") LogOut
+              li#info-nav-item
+                a(href="https://bitbucket.org/catHD/node-js-arena-beta" target="_blank")
+                  i.fa.fa-2x.fa-info-circle.text-warning
+            a#reginfight.btn.btn-success.navbar-btn.navbar-right(data-searching-text="search...")
+              i.fa.fa-fw.fa-sign-in
+              b Fight!
+    .container.main
+      block content

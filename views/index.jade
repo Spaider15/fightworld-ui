@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	if (char) && (user)
+		p.message.logmes You are currently logged in as #{user.username} char : #{char}
+		a(href="/main") Enter
+	else
+		if (user)
+			p.message.logmes You are currently logged in as #{user.username} and no char selected
+			a(href="/select") Enter
+		else
+			p.message.logmes You are currently not logged in. Plaese login or register...

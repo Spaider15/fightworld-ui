@@ -1,0 +1,342 @@
+append chat
+		script.
+			var username = "test";
+	div#panelContainer.row
+		//div.resizer
+		div#chat-panel.col-xs-9.well.tab-content.panel
+			div#room-Arena.tab-pane.rooms
+				div.chat-entries
+			div#chat-controls.input-group
+				input#message-input.form-control(type="text")
+				span.input-group-btn.btnSend
+					button#submit.btn.btn-info(type="button submit") Send!
+		div#side-panel.col-xs-2.well.panel
+			div#num-connected-container
+				div#num-connected-Arena.num-connected
+			div#username-container
+				div#usersList-Arena.usersList
+			div#public-rooms-container
+				div#public-rooms-title
+				div#public-rooms-list
+			div#all-users-list-container
+				div#all-users-list-title All Users:
+				div#all-users-list
+		div#tab-container.col-xs-9
+			ul#tab.nav.nav-pills
+				li.span
+					a#add-room(href="#")
+						span.glyphicon.glyphicon-plus
+				li.span
+					a(href="#room-Arena", data-toggle="tab")
+						span#Arena-badge.badge.tab-badge
+						| Arena
+				li.span
+					a(href="#room-Battle", data-toggle="tab")
+						span#Battle-badge.badge.tab-badge
+						| Battle		
+				li.span
+					a(href="#room-Clan", data-toggle="tab")
+						span#Clan-badge.badge.tab-badge
+						| Clan
+	div#create-room-modal.modal.fade(tabindex="-1", role="dialog", aria-hidden="true" aria-labelledby="create-room-modal-label")
+		div.modal-dialog.modal-sm
+			div.modal-content
+				div.modal-header
+					button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+					h4#create-room-modal-label.modal-title Create a room!
+				div.modal-body
+					input#create-room-modal-input(type="text" placeholder="Enter the room name here")
+					label
+						input#public-room-checkbox(type="checkbox")
+						| Create a public room
+					div#create-room-modal-invite-user-title Invite Other Users:
+					div#create-room-modal-invite-user-container
+				div.modal-footer
+					button#room-modal-close-button.btn.btn-default(type="button" data-dismiss="modal") Close
+					button#create-room-button.btn.btn-primary Create room!
+	
+	div#invitation-modal.modal.fade(tabindex="-1", role="dialog", aria-hidden="true" aria-labelledby="invitation-modal-label")
+		div.modal-dialog.modal-sm
+			div.modal-content
+				div.modal-header
+					button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+					h4#create-room-modal-label.modal-title Invitation
+				div.modal-body
+				div.modal-footer
+					button#invitation-modal-decline-button.btn.btn-default(type="button" data-dismiss="modal") Decline
+					button#invitation-modal-accept-button.btn.btn-primary Accept
+	
+	div#failed-invitation-modal.modal.fade(tabindex="-1", role="dialog", aria-hidden="true" aria-labelledby="failed-invitation-modal-label")
+		div.modal-dialog.modal-sm
+			div.modal-content
+				div.modal-header
+					button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+					h4#failed-invitation-modal-label.modal-title Cannot Invite User!
+				div.modal-body
+				div.modal-footer
+					button#failed-invitation-modal-ok-button.btn.btn-primary(type="button" data-dismiss="modal") OK
+					
+	div#shop-modal.modal.fade(tabindex="-1", role="dialog", aria-hidden="true" aria-labelledby="shop-modal-label")
+		div.modal-dialog.modal-lg
+			div.modal-content
+				div.modal-header
+					button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+					h4#shop-modal-label.modal-title Shop
+				div.modal-body
+					div.btn-group(id='shop-buttons').btn-group-justified.btn-group-lg
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('a')") Одноручные
+						div.btn-group(role='group' )
+							button.btn.btn-default(type='button' onclick="shoprequest('ab')") Двуручное
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('c')") Тело
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('d')") Голова
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('e')") Ноги
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('f')") Пояс
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('g')") Шея
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('j')") Плечи
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('q')") Руки
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('v')") Ухо
+						div.btn-group(role='group')
+							button.btn.btn-default(type='button' onclick="shoprequest('w')") Обувь
+					div.table-responsive
+						table(id = 'shop-table').table.table-hover.table-bordered
+							thead
+								tr
+									th Code
+									th Name
+									th Priece
+							tbody
+				div.modal-footer
+					button#shop-modal-ok-button.btn.btn-primary(type="button" data-dismiss="modal") OK
+	div#character-modal.fade.modal
+		.modal-dialog.modal-lg
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+					h4#character-modal-title.modal-title.text-center Character
+				.modal-body
+					#cont.col-md-12
+						#cont-4.col-md-4
+							.row
+								.col-md-10.text-center
+									h1#nick-name-heading
+										| Nick
+										
+								.col-md-2.text-center
+									i.fa.fa-3x.fa-magic
+							img.center-block.img-responsive.img-thumbnail(src='https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&q=50&fm=jpg&s=e633562a1da53293c4dc391fd41ce41d')
+							.progress
+								.progress-bar.progress-bar-danger(role='progressbar', style='width: 100%;') HP : 100
+							.progress
+								.progress-bar(role='progressbar', style='width: 100%;') MP: 100
+						#cont-8.col-md-8
+							.row
+								.col-md-4
+									ul#harks.list-group
+										li#hl.list-group-item
+											| hl
+											span.badge 42
+										li#mga.list-group-item
+											| mga
+											span.badge 42
+										li#mgp.list-group-item
+											| mgp
+											span.badge 42
+										li#lspell.list-group-item
+											| lspell
+											span.badge 42
+								.col-md-4
+									ul#harks.list-group
+										li#weight.list-group-item
+											| Weight
+											span.badge 42
+										li#exp.list-group-item
+											| EXP
+											span.badge 42
+										li#gold.list-group-item
+											| Gold
+											span.badge 42
+										li#free.list-group-item.list-group-item-info
+											| Free
+											span.badge 42
+								.col-md-4
+									ul#harks.list-group
+										li#hit-min-max.list-group-item
+											| Hit
+											span.badge 42
+										li#at.list-group-item
+											| at
+											span.badge 42
+										li#pr.list-group-item
+											| pr
+											span.badge 42
+										li#max-targ.list-group-item
+											| max targ
+											span.badge 42
+							.row
+								.col-md-12
+									ul#harks.list-group.text-success
+										li#str.list-group-item
+											| STRANGE
+											span.badge 42
+										li#dex.list-group-item
+											| DEXTERY
+											span.badge 42
+										li#wis.list-group-item
+											| WISDOM
+											span.badge 42
+										li#int.list-group-item
+											| INT
+											span.badge 42
+										li#con.list-group-item(contenteditable='true')
+											| CONST
+											span.badge 42
+					#inventory.col-md-12
+						hr
+						.row
+							.col-md-2.text-justify
+								img.center-block.img-responsive(src='https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?w=1024&q=50&fm=jpg&s=cfeadbd7a991e58b553bee29a7eeca55')
+							.col-md-2
+								img.img-responsive(src='https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?w=1024&q=50&fm=jpg&s=cfeadbd7a991e58b553bee29a7eeca55')
+							.col-md-2.text-justify
+								img.center-block.img-responsive(src='https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?w=1024&q=50&fm=jpg&s=cfeadbd7a991e58b553bee29a7eeca55')
+							.col-md-2
+								img.center-block.img-responsive(src='https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?w=1024&q=50&fm=jpg&s=cfeadbd7a991e58b553bee29a7eeca55')
+							.col-md-2
+								img.center-block.img-responsive(src='https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?w=1024&q=50&fm=jpg&s=cfeadbd7a991e58b553bee29a7eeca55')
+							.col-md-2
+								img.center-block.img-responsive(src='https://unsplash.imgix.net/photo-1422222948315-28aadb7a2cb8?w=1024&q=50&fm=jpg&s=cfeadbd7a991e58b553bee29a7eeca55')
+						.row
+							.col-md-3
+								img.img-responsive(src='https://ununsplash.imgix.net/photo-1414637104192-f9ab9a0ee249?w=1024&q=50&fm=jpg&s=39603686d9062f5c4a5309a45e28264e')
+							.col-md-3
+								img.img-responsive(src='https://ununsplash.imgix.net/photo-1413913619092-816734eed3a7?w=1024&q=50&fm=jpg&s=7653dd05ea22b7546a416b360b9d3bdd')
+							.col-md-3
+								img.img-responsive(src='https://unsplash.imgix.net/photo-1422405153578-4bd676b19036?w=1024&q=50&fm=jpg&s=5ecc4c704ea97d85ea550f84a1499228')
+							.col-md-3
+								img.img-responsive(src='https://unsplash.imgix.net/reserve/vof4H8A1S02iWcK6mSAd_sarahmachtsachen.com_TheBeach.jpg?w=1024&q=50&fm=jpg&s=992e28f0751267625026c5a18b66953c')
+				.modal-footer
+					button.btn.btn-default(type='button', data-dismiss='modal') Close
+	div#clan-modal.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+					h4.modal-title.text-center Clans
+				.modal-body
+					.row
+						.col-md-12
+							a#create-clan.btn.btn-primary Create Clan
+							hr
+					.row
+						.col-md-12
+							table#clan-list-table.table.table-bordered
+								thead
+									tr
+										th #
+										th Clan Name
+										th Leader
+										th Users
+										th Join
+								tbody
+									tr
+										td 1
+										td Mark
+										td Otto
+										td 1/5
+										td
+											button#clan-modal-join-button.btn.btn-warning.btn-xs(type='button') Join
+									tr
+										td 2
+										td Jacob
+										td Thornton
+										td @fat
+									tr
+										td 3
+										td Larry
+										td the Bird
+										td @twitter
+									tr
+										td 1
+										td Mark
+										td Otto
+										td @mdo
+				.modal-footer
+					a.btn.btn-default(data-dismiss='modal') Close
+					a.btn.btn-primary Save changes
+
+
+	div#clan-info-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true', aria-labelledby='clan-info-modal-label')
+		.modal-dialog.modal-lg
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+					h4#clani-info-modal-label.modal-title.text-center
+						| Clan
+						br
+				.modal-body
+					.col-md-3
+						.row
+							.col-md-12
+								.panel.panel-primary
+									.panel-heading
+										h3.panel-title Info
+									.panel-body
+										img.img-responsive(src='http://pingendo.github.io/pingendo-bootstrap/assets/blurry/800x600/14.jpg')
+										ul.list-group
+											li.list-group-item Name:
+											li.list-group-item Leader:
+											li.list-group-item Level:
+											li.list-group-item Bank:
+											li.list-group-item Members:
+											li.list-group-item WinRate:
+						.row
+							.col-md-12
+								.panel.panel-primary
+									.panel-heading
+										h3.panel-title Clan Message
+									.panel-body
+										p.text-justify.text-muted Panel content
+					.col-md-9
+						ul.nav.nav-pills
+							li.active
+								a(href='#') Players
+							li
+								a(href='#') Requests
+							li
+								a(href='#') ClanHall
+							li
+								a(href='#') Info
+						ul.list-group
+							li.list-group-item
+								| Nick
+								span.badge 10 lvl
+							li.list-group-item
+								| Dolol
+								span.badge 42 lvl
+							li.list-group-item.list-group-item-success
+								| Morbi leo risus
+								span.badge 15 lvl
+							li.list-group-item
+								| Porta ac consectetur ac
+								span.badge 3 lvl
+							li.list-group-item.list-group-item-success
+								| Vestibulum at eros
+								span.badge 155 lvl
+						.row
+							.col-xs-12.text-left
+								a#dissmiss-clan.btn.btn-danger.btn-sm.disabled Leave Clan
+				.modal-footer
+					button#clan-info-modal-ok-button.btn.btn-primary(type='button', data-dismiss='modal') OK
+					audio#prvtmsg(src='img/private.mp3')
+					script(src="/socket.io/socket.io.js")
+					script(src="/js/emojify.min.js")
+					script(src="/js/script.min.js")

@@ -1,0 +1,30 @@
+extends layout
+append content
+		.main.container_.row
+			div#charlist-col.col-md-6
+				.row
+					.col-lg-12
+						h5.text-center.text-success Team
+						.row
+							.col-xs-6.col-xs-offset-3#yourcol
+						.row#team-list
+							h2.text-center Pre-Loading...
+				.row
+					.col-xs-12
+						h5.text-center.text-warning Enemy
+						.row#enemy-list
+							h2.text-center Pre-Loading...
+			.col-md-6
+				.row
+					.well.well-sm.fight_log
+				.row
+						ul.nav.nav-tabs.skill_panel
+							li.skill_tabs.active
+								a(href="#tc0" tag="tc0") 0
+						.skill_content.tab-content
+							div#tc0.tab-pane.active
+								.panel-body
+									.panel.panel-default.skill_cards
+					.panel.panel-default.skill_slots
+		script(src="/js/setpanel.js")
+				include chat
