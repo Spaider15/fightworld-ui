@@ -9,3 +9,6 @@ Web UI: https://fw-ui-catxd.c9users.io
 
 Start : node ./bin/www
 
+>> Для работы вы должны быть авторизованны на node-js-arena-beta-cathd.c9.io
+
+
